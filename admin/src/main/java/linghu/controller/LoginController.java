@@ -1,5 +1,6 @@
 package linghu.controller;
 
+import linghu.service.IAreaService;
 import linghu.service.MyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
     @Autowired
     private MyService myService;
+    @Autowired
+    private IAreaService areaService;
 
 
     @GetMapping("/greeting")

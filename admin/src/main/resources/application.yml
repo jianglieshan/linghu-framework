@@ -1,7 +1,8 @@
 #jpa config
 server:
-  port: 8888
+  port: 8080
 spring:
+  profiles.active: dev
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://140.143.247.178:3306/hotel?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=UTF8
@@ -32,6 +33,23 @@ spring:
     filters: stat,wall,log4j
     # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
+  session:
+    store-type: hash_map
+
+  thymeleaf:
+      mode: HTML
+
+#监控关闭
+#security:
+#  basic:
+#    enabled: false
+#  ignore: /**
+#management:
+#  security:
+#    enabled: false
+
+
 
 logging:
   level:

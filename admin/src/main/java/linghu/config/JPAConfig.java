@@ -20,8 +20,8 @@ import javax.sql.DataSource;
  *
  * */
 //@Configuration
-//@EnableJpaRepositories(basePackages = "linghu.repository")
-//@EnableTransactionManagement
+@EnableJpaRepositories(basePackages = "linghu.repository")
+@EnableTransactionManagement
 public class JPAConfig {
 
     @Bean
@@ -32,7 +32,7 @@ public class JPAConfig {
 
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean(){
+    public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactory(){
         HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
         jpaVendorAdapter.setGenerateDdl(false);
 
@@ -43,12 +43,12 @@ public class JPAConfig {
         entityManagerFactory.setPackagesToScan("linghu.entity");
         return entityManagerFactory;
     }
-/*
+
     @Bean
     public PlatformTransactionManager platformTransactionManager(EntityManagerFactory entityManagerFactory){
         JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
         jpaTransactionManager.setEntityManagerFactory(entityManagerFactory);
         return jpaTransactionManager;
-    }*/
+    }
 
 }

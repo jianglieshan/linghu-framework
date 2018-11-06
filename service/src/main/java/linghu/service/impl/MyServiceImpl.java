@@ -13,8 +13,9 @@ public class MyServiceImpl implements MyService {
 
 
     @Override
-    public void hello() {
-        Area a = areaRepository.getOne("0");
+    public Area hello() {
+        Area a = areaRepository.findByCode("0");
         System.out.println("hello"+a.getName());
+        return a;
     }
 }

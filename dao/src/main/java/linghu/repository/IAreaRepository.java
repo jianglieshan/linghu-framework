@@ -9,4 +9,6 @@ import java.util.List;
 
 @Repository
 public interface IAreaRepository extends JpaRepository<Area,String> {
+    List<Area>findAreaByCityLevel(String cityLevel);
+    Area findByCode(String code);
 }
