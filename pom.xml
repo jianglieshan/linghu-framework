@@ -8,6 +8,14 @@
     <artifactId>root</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.3.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
     <modules>
         <module>service</module>
         <module>admin</module>
@@ -15,6 +23,4 @@
         <module>library</module>
         <module>webapi</module>
     </modules>
-
-
 </project>

@@ -1,0 +1,38 @@
+#jpa config
+server:
+  port: 8888
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://140.143.247.178:3306/hotel?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=UTF8
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: linghuhotel
+    password: hotel!@#qwe
+  jpa:
+    show-sql: true
+    ddl-auto: validate
+  druid:
+    ## 初始化大小，最小，最大
+    initialSize: 2
+    minIdle: 5
+    maxActive: 10
+    ## 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 10
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
+logging:
+  level:
+    org.hibernate.SQL: debug
