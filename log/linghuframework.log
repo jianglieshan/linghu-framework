@@ -1,0 +1,72 @@
+2018-11-07 09:43:08.091 - INFO  [  restartedMain] o.s.b.StartupInfoLogger        : Starting Application on jiangzhengdeMBP with PID 11566 (/Users/jiangzheng/Documents/Github/linghu-framework/admin/target/classes started by jiangzheng in /Users/jiangzheng/Documents/Github/linghu-framework)
+2018-11-07 09:43:08.100 - INFO  [  restartedMain] o.s.b.SpringApplication        : The following profiles are active: dev
+2018-11-07 09:43:08.204 - INFO  [  restartedMain] c.s.AbstractApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@342d50af: startup date [Wed Nov 07 09:43:08 CST 2018]; root of context hierarchy
+2018-11-07 09:43:11.122 - INFO  [  restartedMain] egate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$acf0e833] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-11-07 09:43:11.937 - INFO  [  restartedMain] o.s.b.w.e.t.TomcatWebServer    : Tomcat initialized with port(s): 8080 (http)
+2018-11-07 09:43:11.968 - INFO  [  restartedMain] o.a.j.l.DirectJDKLog           : Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-07 09:43:11.994 - INFO  [  restartedMain] o.a.j.l.DirectJDKLog           : Starting service [Tomcat]
+2018-11-07 09:43:11.996 - INFO  [  restartedMain] o.a.j.l.DirectJDKLog           : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-11-07 09:43:12.010 - INFO  [ost-startStop-1] o.a.j.l.DirectJDKLog           : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/jiangzheng/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-11-07 09:43:12.144 - INFO  [ost-startStop-1] o.a.j.l.DirectJDKLog           : Initializing Spring embedded WebApplicationContext
+2018-11-07 09:43:12.144 - INFO  [ost-startStop-1] letWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3944 ms
+2018-11-07 09:43:12.510 - INFO  [ost-startStop-1] .b.w.s.ServletRegistrationBean : Servlet statViewServlet mapped to [/druid/*]
+2018-11-07 09:43:12.513 - INFO  [ost-startStop-1] .b.w.s.ServletRegistrationBean : Servlet dispatcherServlet mapped to [/]
+2018-11-07 09:43:12.519 - INFO  [ost-startStop-1] AbstractFilterRegistrationBean : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-07 09:43:12.520 - INFO  [ost-startStop-1] AbstractFilterRegistrationBean : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-07 09:43:12.520 - INFO  [ost-startStop-1] AbstractFilterRegistrationBean : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-11-07 09:43:12.521 - INFO  [ost-startStop-1] AbstractFilterRegistrationBean : Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-07 09:43:12.521 - INFO  [ost-startStop-1] AbstractFilterRegistrationBean : Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-07 09:43:12.667 - WARN  [  restartedMain] c.s.AbstractApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [linghu/config/DruidConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'dataSource' threw exception; nested exception is java.lang.NoClassDefFoundError: org/apache/log4j/Priority
+2018-11-07 09:43:12.672 - INFO  [  restartedMain] o.a.j.l.DirectJDKLog           : Stopping service [Tomcat]
+2018-11-07 09:43:12.740 - INFO  [  restartedMain] valuationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-11-07 09:44:39.976 - INFO  [  restartedMain] o.s.b.StartupInfoLogger        : Starting Application on jiangzhengdeMBP with PID 11579 (/Users/jiangzheng/Documents/Github/linghu-framework/admin/target/classes started by jiangzheng in /Users/jiangzheng/Documents/Github/linghu-framework)
+2018-11-07 09:44:39.987 - INFO  [  restartedMain] o.s.b.SpringApplication        : The following profiles are active: dev
+2018-11-07 09:44:40.136 - INFO  [  restartedMain] c.s.AbstractApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@a9c4fd2: startup date [Wed Nov 07 09:44:40 CST 2018]; root of context hierarchy
+2018-11-07 09:44:43.064 - INFO  [  restartedMain] egate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e29bb06a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-11-07 09:44:43.902 - INFO  [  restartedMain] o.s.b.w.e.t.TomcatWebServer    : Tomcat initialized with port(s): 8080 (http)
+2018-11-07 09:44:43.965 - INFO  [  restartedMain] o.a.j.l.DirectJDKLog           : Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-07 09:44:43.992 - INFO  [  restartedMain] o.a.j.l.DirectJDKLog           : Starting service [Tomcat]
+2018-11-07 09:44:43.993 - INFO  [  restartedMain] o.a.j.l.DirectJDKLog           : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-11-07 09:44:44.017 - INFO  [ost-startStop-1] o.a.j.l.DirectJDKLog           : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/jiangzheng/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-11-07 09:44:44.192 - INFO  [ost-startStop-1] o.a.j.l.DirectJDKLog           : Initializing Spring embedded WebApplicationContext
+2018-11-07 09:44:44.193 - INFO  [ost-startStop-1] letWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4062 ms
+2018-11-07 09:44:44.528 - INFO  [ost-startStop-1] .b.w.s.ServletRegistrationBean : Servlet statViewServlet mapped to [/druid/*]
+2018-11-07 09:44:44.531 - INFO  [ost-startStop-1] .b.w.s.ServletRegistrationBean : Servlet dispatcherServlet mapped to [/]
+2018-11-07 09:44:44.536 - INFO  [ost-startStop-1] AbstractFilterRegistrationBean : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-07 09:44:44.537 - INFO  [ost-startStop-1] AbstractFilterRegistrationBean : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-07 09:44:44.537 - INFO  [ost-startStop-1] AbstractFilterRegistrationBean : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-11-07 09:44:44.538 - INFO  [ost-startStop-1] AbstractFilterRegistrationBean : Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-07 09:44:44.538 - INFO  [ost-startStop-1] AbstractFilterRegistrationBean : Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-07 09:44:46.079 - INFO  [  restartedMain] c.a.d.p.DruidDataSource        : {dataSource-1} inited
+2018-11-07 09:44:46.204 - INFO  [  restartedMain] tainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-11-07 09:44:46.230 - INFO  [  restartedMain] o.h.j.i.u.LogHelper            : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-11-07 09:44:46.422 - INFO  [  restartedMain] o.h.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-11-07 09:44:46.429 - INFO  [  restartedMain] o.h.c.Environment              : HHH000206: hibernate.properties not found
+2018-11-07 09:44:46.599 - INFO  [  restartedMain] .a.c.r.j.JavaReflectionManager : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-11-07 09:44:46.850 - INFO  [  restartedMain] o.h.d.Dialect                  : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2018-11-07 09:44:47.858 - INFO  [  restartedMain] stractEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-11-07 09:44:48.798 - INFO  [  restartedMain] .s.h.AbstractUrlHandlerMapping : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-07 09:44:49.254 - INFO  [  restartedMain] a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@a9c4fd2: startup date [Wed Nov 07 09:44:40 CST 2018]; root of context hierarchy
+2018-11-07 09:44:49.348 - WARN  [  restartedMain] uration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-11-07 09:44:49.673 - INFO  [  restartedMain] rMethodMapping$MappingRegistry : Mapped "{[/],methods=[GET]}" onto public java.lang.String linghu.controller.HomeController.index()
+2018-11-07 09:44:49.676 - INFO  [  restartedMain] rMethodMapping$MappingRegistry : Mapped "{[/greeting],methods=[GET]}" onto public java.lang.String linghu.controller.LoginController.greeting(java.lang.String,org.springframework.ui.Model)
+2018-11-07 09:44:49.679 - INFO  [  restartedMain] rMethodMapping$MappingRegistry : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-11-07 09:44:49.681 - INFO  [  restartedMain] rMethodMapping$MappingRegistry : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-11-07 09:44:49.731 - INFO  [  restartedMain] .s.h.AbstractUrlHandlerMapping : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-07 09:44:49.732 - INFO  [  restartedMain] .s.h.AbstractUrlHandlerMapping : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-07 09:44:49.976 - INFO  [  restartedMain] .w.s.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2018-11-07 09:44:50.414 - INFO  [  restartedMain] b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2018-11-07 09:44:50.554 - INFO  [  restartedMain] o.s.j.e.MBeanExporter          : Registering beans for JMX exposure on startup
+2018-11-07 09:44:50.559 - INFO  [  restartedMain] o.s.j.e.MBeanExporter          : Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-11-07 09:44:50.578 - INFO  [  restartedMain] o.s.j.e.MBeanExporter          : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2018-11-07 09:44:50.625 - INFO  [  restartedMain] o.a.j.l.DirectJDKLog           : Starting ProtocolHandler ["http-nio-8080"]
+2018-11-07 09:44:50.686 - INFO  [  restartedMain] o.a.j.l.DirectJDKLog           : Using a shared selector for servlet write/read
+2018-11-07 09:44:50.737 - INFO  [  restartedMain] o.s.b.w.e.t.TomcatWebServer    : Tomcat started on port(s): 8080 (http) with context path ''
+2018-11-07 09:44:50.751 - INFO  [  restartedMain] o.s.b.StartupInfoLogger        : Started Application in 11.665 seconds (JVM running for 14.033)
+2018-11-07 09:45:01.299 - INFO  [nio-8080-exec-1] o.a.j.l.DirectJDKLog           : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-11-07 09:45:01.300 - INFO  [nio-8080-exec-1] o.s.w.s.FrameworkServlet       : FrameworkServlet 'dispatcherServlet': initialization started
+2018-11-07 09:45:01.333 - INFO  [nio-8080-exec-1] o.s.w.s.FrameworkServlet       : FrameworkServlet 'dispatcherServlet': initialization completed in 33 ms

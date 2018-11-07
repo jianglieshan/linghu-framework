@@ -1,5 +1,6 @@
 package linghu.config;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -24,6 +25,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport implements
      * @return
      */
     @Bean
+    @ConfigurationProperties(prefix = "spring.thymeleaf")
     public SpringResourceTemplateResolver templateResolver(){
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
