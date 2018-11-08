@@ -20,8 +20,20 @@
         </dependency>
 
         <dependency>
+            <groupId>com.linghu.framework</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -79,6 +91,5 @@
             <version>0.10.5</version>
             <scope>runtime</scope>
         </dependency>
-
     </dependencies>
 </project>

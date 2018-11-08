@@ -3,6 +3,7 @@ package linghu.utils;
 import linghu.enums.LogEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 /**
  * 本地日志参考类
  * @author Administrator
@@ -14,8 +15,8 @@ public class LogUtils {
      *
      * @return
      */
-    public static Logger getBussinessLogger() {
-        return LoggerFactory.getLogger(LogEnum.BUSSINESS.getCategory());
+    public static Logger getBusinessLogger() {
+        return LoggerFactory.getLogger(LogEnum.BUSINESS.getCategory());
     }
 
     /**

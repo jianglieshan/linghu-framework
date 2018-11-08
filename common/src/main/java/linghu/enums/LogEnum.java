@@ -1,9 +1,8 @@
 package linghu.enums;
 
-
 public enum  LogEnum {
 
-    BUSSINESS("bussiness"),
+    BUSINESS("business"),
 
     PLATFORM("platform"),
 
@@ -25,5 +24,3 @@ public enum  LogEnum {
         this.category = category;
     }
 }
-
-

@@ -22,5 +22,6 @@
         <module>dao</module>
         <module>library</module>
         <module>webapi</module>
+        <module>common</module>
     </modules>
 </project>
