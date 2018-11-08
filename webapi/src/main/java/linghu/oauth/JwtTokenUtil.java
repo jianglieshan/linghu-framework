@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.SecretKey;
+
 @Component
 public class JwtTokenUtil implements Serializable {
 
@@ -77,12 +79,14 @@ public class JwtTokenUtil implements Serializable {
         final Date createdDate = new Date();
         final Date expirationDate = calculateExpirationDate(createdDate);
 
+        SecretKey sk =io.jsonwebtoken.security.Keys.secretKeyFor(SignatureAlgorithm.HS512);
+
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(createdDate)
                 .setExpiration(expirationDate)
-                .signWith(SignatureAlgorithm.HS512, secret)
+                .signWith(sk)
                 .compact();
     }
 

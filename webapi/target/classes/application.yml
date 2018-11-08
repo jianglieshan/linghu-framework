@@ -66,7 +66,7 @@ logging:
 # JWT
 jwt:
   header: Authorization
-  secret: 1234567890qwertyuiop
+  secret: 1234567890
   expiration: 604800
   tokenHead: "Bearer "
   route:
