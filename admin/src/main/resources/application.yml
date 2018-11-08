@@ -1,6 +1,9 @@
 #jpa config
 server:
   port: 8080
+  error:
+    whitelabel:
+      enabled: false
 spring:
   profiles.active: dev
   datasource:
@@ -39,6 +42,9 @@ spring:
 
   thymeleaf:
       mode: HTML
+      suffix: .html
+      prefix: classpath:/templates/
+
 #监控关闭
 #security:
 #  basic:

@@ -8,7 +8,7 @@ spring:
   profiles.active: dev
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://140.143.247.178:3306/hotel?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=UTF8
+    url: jdbc:mysql://140.143.247.178:3306/test?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=UTF8
     type: com.alibaba.druid.pool.DruidDataSource
     username: linghuhotel
     password: hotel!@#qwe
@@ -46,7 +46,9 @@ spring:
       prefix: classpath:/templates/
 
 #监控关闭
-#security:
+security:
+  ignored:
+  - "*.bundle.*"
 #  basic:
 #    enabled: false
 #  ignore: /**
@@ -57,7 +59,19 @@ spring:
 
 
 logging:
-  config: classpath:log4j2.yml
+  #config: classpath:log4j2.yml
 
   level:
     org.hibernate.SQL: debug
+
+# JWT
+jwt:
+  header: Authorization
+  secret: 1234567890qwertyuiop
+  expiration: 604800
+  tokenHead: "Bearer "
+  route:
+    authentication:
+      path: auth
+      refresh: refresh
+      register: "auth/register"

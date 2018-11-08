@@ -10,7 +10,7 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
-//@Configuration
+@Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport implements
         ApplicationContextAware {
     private  ApplicationContext applicationContext;
