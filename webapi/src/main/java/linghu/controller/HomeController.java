@@ -13,7 +13,7 @@ public class HomeController {
     @GetMapping("/")
     public String index()
     {
-        LogUtils.getBusinessLogger().error("error");
+        LogUtils.getBusinessLogger().error("测试一下啊啊啊啊啊啊啊");
         return "hello";
     }
 

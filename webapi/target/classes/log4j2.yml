@@ -58,8 +58,8 @@ Configuration:
 #   业务日志
       - name: BUSSINESS_ROLLING_FILE
         ignoreExceptions: false
-        fileName: ${log.path}/bussiness/${project.name}_bussiness.log
-        filePattern: "${log.path}/bussiness/$${date:yyyy-MM}/${project.name}-%d{yyyy-MM-dd}-%i.log.gz"
+        fileName: ${log.path}/business/${project.name}_business.log
+        filePattern: "${log.path}/business/$${date:yyyy-MM}/${project.name}-%d{yyyy-MM-dd}-%i.log.gz"
         PatternLayout:
           pattern: ${log.pattern}
         Policies:
@@ -112,7 +112,7 @@ Configuration:
         AppenderRef:
           - ref: CONSOLE
           - ref: PLATFORM_ROLLING_FILE
-      - name: bussiness
+      - name: business
         level: info
         additivity: false
         AppenderRef:

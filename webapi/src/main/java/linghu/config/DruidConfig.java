@@ -1,6 +1,8 @@
 package linghu.config;
 
 
+import com.alibaba.druid.filter.Filter;
+import com.alibaba.druid.filter.logging.Log4j2Filter;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
@@ -13,6 +15,8 @@ import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.Collections;
 
 @Configuration
 public class DruidConfig {
@@ -101,8 +105,13 @@ public class DruidConfig {
         } catch (SQLException e) {
             //logger.error("druid configuration initialization filter", e);
         }
+        Log4j2Filter f = new com.alibaba.druid.filter.logging.Log4j2Filter();
+        f.setConnectionLogEnabled(false);
+        f.setStatementLogEnabled(false);
+        f.setResultSetLogEnabled(true);
+        f.setStatementExecutableSqlLogEnable(true);
+        datasource.setProxyFilters(Collections.singletonList(f));
         datasource.setConnectionProperties(connectionProperties);
-
         return datasource;
     }
 

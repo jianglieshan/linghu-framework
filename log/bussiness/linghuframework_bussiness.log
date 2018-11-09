@@ -1,5 +1,0 @@
-2018-11-07 09:45:01.384 -ERROR  [nio-8080-exec-1] l.c.HomeController             : test
-2018-11-07 09:45:32.237 -ERROR  [nio-8080-exec-2] l.c.HomeController             : test
-2018-11-07 13:25:49.480 -ERROR  [nio-8080-exec-1] l.c.HomeController             : test
-2018-11-07 13:25:56.743 -ERROR  [nio-8080-exec-2] l.c.HomeController             : test
-2018-11-07 13:27:30.455 -ERROR  [nio-8080-exec-1] l.c.HomeController             : test
