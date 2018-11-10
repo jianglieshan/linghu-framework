@@ -14,4 +14,6 @@ public interface IUserService {
     UserViewModel register(RegisterRequest request, ServiceContext context);
     LoginResonse login(RegisterRequest request, ServiceContext context);
     boolean logout(RegisterRequest request, ServiceContext context);
+
+    UserViewModel findUserByUsername(String userName);
 }

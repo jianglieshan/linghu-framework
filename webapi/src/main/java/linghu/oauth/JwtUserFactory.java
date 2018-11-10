@@ -1,6 +1,7 @@
 package linghu.oauth;
 
 import linghu.entity.User;
+import linghu.userservice.dto.UserViewModel;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -13,12 +14,12 @@ public final class JwtUserFactory {
     private JwtUserFactory() {
     }
 
-    public static JwtUser create(User user) {
+    public static JwtUser create(UserViewModel user) {
         return new JwtUser(
                 user.getId().toString(),
                 user.getUserName(),
                 user.getPwd(),
-                mapToGrantedAuthorities(Arrays.asList(user.getRoles().split(","))),
+                mapToGrantedAuthorities(user.getRoles()),
                 user.getLastPasswordResetDate()
         );
     }

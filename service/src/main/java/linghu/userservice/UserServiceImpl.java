@@ -67,4 +67,13 @@ public class UserServiceImpl implements IUserService {
     public boolean logout(RegisterRequest request, ServiceContext context) {
         return false;
     }
+
+    @Override
+    public UserViewModel findUserByUsername(String userName) {
+        User u = userRepository.findByuserName(userName);
+        if(u == null){
+            throw ServiceException.createException("用户不存在");
+        }
+        return new UserViewModel(u);
+    }
 }

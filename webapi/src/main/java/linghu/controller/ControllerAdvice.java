@@ -3,6 +3,11 @@ package linghu.controller;
 import linghu.base.BaseResponse;
 import linghu.base.ErrorCode;
 import linghu.exceptionservice.ServiceException;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -46,4 +51,26 @@ public class ControllerAdvice {
         return  new BaseResponse<>(ex.getFriendlyErrorMsg(),ErrorCode.FAILURE);
     }
 
+    @ResponseBody
+    @ExceptionHandler(value = AuthenticationException.class)
+    public BaseResponse<String> errorHandler(AuthenticationException ex) {
+        String msg = "认证失败";
+        if(ex instanceof BadCredentialsException){
+            msg = "密码错误";
+        }
+        else if(ex instanceof UsernameNotFoundException){
+            msg = "用户不存在";
+        }
+        else if(ex instanceof InternalAuthenticationServiceException){
+            msg = ex.getMessage();
+        }
+        return  new BaseResponse<>(msg,ErrorCode.FAILURE);
+    }
+
+    @ResponseBody
+    @ExceptionHandler(value = AccessDeniedException.class)
+    public BaseResponse<String> errorHandler(AccessDeniedException ex) {
+        String msg = "权限不足";
+        return  new BaseResponse<>(msg,ErrorCode.FAILURE);
+    }
 }

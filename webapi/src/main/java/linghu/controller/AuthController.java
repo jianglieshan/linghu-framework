@@ -7,11 +7,11 @@ import linghu.dto.JwtAuthenticationRequest;
 import linghu.dto.JwtAuthenticationResponse;
 import linghu.entity.User;
 import linghu.oauth.AuthService;
+import linghu.userservice.dto.LoginRequest;
 import linghu.userservice.dto.RegisterRequest;
 import linghu.userservice.dto.UserViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
+@RequestMapping("/auth/")
 public class AuthController {
     @Value("${jwt.header}")
     private String tokenHeader;
@@ -28,25 +29,19 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    @RequestMapping(value = "${jwt.route.authentication.path}", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(
-            @RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException {
-        final String token = authService.login(authenticationRequest.getUserName(), authenticationRequest.getPassword());
-
-        // Return the token
-        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
+    @RequestMapping(value = "${jwt.route.authentication.login}", method = RequestMethod.POST)
+    public BaseResponse<UserViewModel> login(
+            @RequestBody BaseRequest<LoginRequest> request) throws AuthenticationException {
+        UserViewModel u = authService.login(request.param, request.clientInfo);
+        return new BaseResponse<>(u,ErrorCode.SUCCESS);
     }
 
-    @RequestMapping(value = "${jwt.route.authentication.refresh}", method = RequestMethod.GET)
-    public ResponseEntity<?> refreshAndGetAuthenticationToken(
-            HttpServletRequest request) throws AuthenticationException{
-        String token = request.getHeader(tokenHeader);
+    @RequestMapping(value = "${jwt.route.authentication.refresh}", method = RequestMethod.POST)
+    public BaseResponse<String> refresh(@RequestBody BaseRequest<String> request,HttpServletRequest servletRequest){
+
+        String token = servletRequest.getHeader(tokenHeader);
         String refreshedToken = authService.refresh(token);
-        if(refreshedToken == null) {
-            return ResponseEntity.badRequest().body(null);
-        } else {
-            return ResponseEntity.ok(new JwtAuthenticationResponse(refreshedToken));
-        }
+        return new BaseResponse<>(refreshedToken,ErrorCode.SUCCESS);
     }
 
     @RequestMapping(value = "${jwt.route.authentication.register}", method = RequestMethod.POST)

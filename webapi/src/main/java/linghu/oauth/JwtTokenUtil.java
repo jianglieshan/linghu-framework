@@ -2,6 +2,7 @@ package linghu.oauth;
 
 
 import java.io.Serializable;
+import java.security.Key;
 import java.time.Clock;
 import java.util.Date;
 import java.util.HashMap;
@@ -11,6 +12,7 @@ import java.util.function.Function;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -28,6 +30,7 @@ public class JwtTokenUtil implements Serializable {
 
     @Value("${jwt.secret}")
     private String secret;
+//    static final  private Key secret = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     @Value("${jwt.expiration}")
     private Long expiration;
@@ -79,14 +82,14 @@ public class JwtTokenUtil implements Serializable {
         final Date createdDate = new Date();
         final Date expirationDate = calculateExpirationDate(createdDate);
 
-        SecretKey sk =io.jsonwebtoken.security.Keys.secretKeyFor(SignatureAlgorithm.HS512);
+//        Key sk =io.jsonwebtoken.security.
 
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(createdDate)
                 .setExpiration(expirationDate)
-                .signWith(sk)
+                .signWith(SignatureAlgorithm.HS256,secret)
                 .compact();
     }
 
@@ -106,7 +109,7 @@ public class JwtTokenUtil implements Serializable {
 
         return Jwts.builder()
                 .setClaims(claims)
-                .signWith(SignatureAlgorithm.HS512, secret)
+                .signWith(SignatureAlgorithm.HS256,secret)
                 .compact();
     }
 

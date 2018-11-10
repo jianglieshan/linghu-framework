@@ -2,10 +2,10 @@ package linghu.oauth;
 
 import linghu.base.ServiceContext;
 import linghu.userservice.IUserService;
+import linghu.userservice.dto.LoginRequest;
 import linghu.userservice.dto.RegisterRequest;
 import linghu.userservice.dto.UserViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,8 +23,8 @@ public class AuthServiceImpl implements AuthService {
     private JwtTokenUtil jwtTokenUtil;
     private IUserService userService;
 
-    @Value("${jwt.tokenHead}")
-    private String tokenHead;
+    //@Value("${jwt.tokenHead}")
+    //private String tokenHead;
 
     @Autowired
     public AuthServiceImpl(
@@ -47,22 +47,27 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public String login(String username, String password) {
-        UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(username, password);
+    public UserViewModel login(LoginRequest request, ServiceContext context) {
+
+        UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(request.getUserName(),
+                request.getPassword());
         final Authentication authentication = authenticationManager.authenticate(upToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        return jwtTokenUtil.generateToken(userDetails);
+        UserViewModel uvm = userService.findUserByUsername(request.getUserName());
+        UserDetails userDetails = JwtUserFactory.create(uvm);
+        //userDetailsService.loadUserByUsername(request.getUserName());
+        uvm.setToken(jwtTokenUtil.generateToken(userDetails));
+        return uvm;
     }
+
 
     @Override
     public String refresh(String oldToken) {
-        final String token = oldToken.substring(tokenHead.length());
-        String username = jwtTokenUtil.getUsernameFromToken(token);
+        String username = jwtTokenUtil.getUsernameFromToken(oldToken);
         JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
-        if (jwtTokenUtil.canTokenBeRefreshed(token, user.getLastPasswordResetDate())){
-            return jwtTokenUtil.refreshToken(token);
+        if (jwtTokenUtil.canTokenBeRefreshed(oldToken, user.getLastPasswordResetDate())){
+            return jwtTokenUtil.refreshToken(oldToken);
         }
         return null;
     }

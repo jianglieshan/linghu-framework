@@ -66,11 +66,12 @@ logging:
 # JWT
 jwt:
   header: Authorization
-  secret: 1234567890
+  secret: "MIGrAgEAAiEAyqbTV4hGImJtP8Ml69cDjBKFquXdEIYIfGUmt4ZsECAwEAAQIhAIRZ5Bl85OE8C716DY2PT8S5tp6EazpketURDxZeDFhAhEA02nENC2XnO7NKvgfF3aRQIRAMs0ZF0vA56n5jrJe28CwE0CEDr2lD8t9PCbigEAMTiH9IECEGbow6NFegnRchF3lGFlUkCEQCNyseSZZBiBxPfXOjMuVc4"
+
   expiration: 604800
   tokenHead: "Bearer "
   route:
     authentication:
-      path: auth
-      refresh: refresh
-      register: "auth/register"
+      login: "login"
+      refresh: "refresh"
+      register: "register"

@@ -14,6 +14,7 @@ public class UserViewModel {
     private List<String> roles;
     private Date lastPasswordResetDate;
     private Date createDate;
+    private String token;
 
     public Integer getId() {
         return id;
@@ -61,6 +62,14 @@ public class UserViewModel {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public UserViewModel() {
