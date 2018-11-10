@@ -1,9 +1,14 @@
 package linghu.controller;
 
+import linghu.base.BaseRequest;
+import linghu.base.BaseResponse;
+import linghu.base.ErrorCode;
 import linghu.dto.JwtAuthenticationRequest;
 import linghu.dto.JwtAuthenticationResponse;
 import linghu.entity.User;
 import linghu.oauth.AuthService;
+import linghu.userservice.dto.RegisterRequest;
+import linghu.userservice.dto.UserViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -45,7 +50,7 @@ public class AuthController {
     }
 
     @RequestMapping(value = "${jwt.route.authentication.register}", method = RequestMethod.POST)
-    public User register(@RequestBody User addedUser) throws AuthenticationException{
-        return authService.register(addedUser);
+    public BaseResponse<UserViewModel> register(@RequestBody BaseRequest<RegisterRequest> request) throws AuthenticationException{
+        return  new BaseResponse<>(authService.register(request.param,request.clientInfo),ErrorCode.SUCCESS);
     }
 }

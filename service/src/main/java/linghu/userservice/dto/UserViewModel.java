@@ -1,19 +1,17 @@
-package linghu.entity;
+package linghu.userservice.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import linghu.entity.User;
+
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
-@Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+public class UserViewModel {
+
     private Integer id;
     private String userName;
     private String pwd;
-    private String roles;
+    private List<String> roles;
     private Date lastPasswordResetDate;
     private Date createDate;
 
@@ -41,17 +39,18 @@ public class User {
         this.pwd = pwd;
     }
 
-    public String getRoles() {
+    public List<String> getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) {
+    public void setRoles(List<String> roles) {
         this.roles = roles;
     }
 
     public Date getLastPasswordResetDate() {
         return lastPasswordResetDate;
     }
+
     public void setLastPasswordResetDate(Date lastPasswordResetDate) {
         this.lastPasswordResetDate = lastPasswordResetDate;
     }
@@ -63,4 +62,16 @@ public class User {
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
+
+    public UserViewModel() {
+    }
+    public UserViewModel(User user) {
+        id = user.getId();
+        userName = user.getUserName();
+        pwd = user.getPwd();
+        roles = Arrays.asList(user.getRoles().split(","));
+        lastPasswordResetDate = user.getLastPasswordResetDate();
+        createDate = user.getCreateDate();
+    }
+
 }

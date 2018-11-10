@@ -1,7 +1,9 @@
 package linghu.oauth;
 
-import linghu.entity.User;
-import linghu.repository.IUserRepository;
+import linghu.base.ServiceContext;
+import linghu.userservice.IUserService;
+import linghu.userservice.dto.RegisterRequest;
+import linghu.userservice.dto.UserViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,7 +21,7 @@ public class AuthServiceImpl implements AuthService {
     private AuthenticationManager authenticationManager;
     private UserDetailsService userDetailsService;
     private JwtTokenUtil jwtTokenUtil;
-    private IUserRepository userRepository;
+    private IUserService userService;
 
     @Value("${jwt.tokenHead}")
     private String tokenHead;
@@ -29,25 +31,19 @@ public class AuthServiceImpl implements AuthService {
             AuthenticationManager authenticationManager,
             UserDetailsService userDetailsService,
             JwtTokenUtil jwtTokenUtil,
-            IUserRepository userRepository) {
+            IUserService userService) {
         this.authenticationManager = authenticationManager;
         this.userDetailsService = userDetailsService;
         this.jwtTokenUtil = jwtTokenUtil;
-        this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @Override
-    public User register(User userToAdd) {
-        final String username = userToAdd.getUserName();
-        if(userRepository.findByuserName(username)!=null) {
-            return null;
-        }
+    public UserViewModel register(RegisterRequest request, ServiceContext context) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        final String rawPassword = userToAdd.getPwd();
-        userToAdd.setPwd(encoder.encode(rawPassword));
-//        userToAdd.setLastPasswordResetDate(new Date());
-        userToAdd.setRoles("ROLE_USER");
-        return userRepository.save(userToAdd);
+        final String rawPassword = request.password;
+        request.password = encoder.encode(rawPassword);
+        return userService.register(request,context);
     }
 
     @Override
@@ -57,8 +53,7 @@ public class AuthServiceImpl implements AuthService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        final String token = jwtTokenUtil.generateToken(userDetails);
-        return token;
+        return jwtTokenUtil.generateToken(userDetails);
     }
 
     @Override
