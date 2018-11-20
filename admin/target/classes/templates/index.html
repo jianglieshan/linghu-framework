@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--<head th:replace="common/common_header :: common_header(~{::title},~{::link})">-->
-<head th:replace="common/common_header :: common_header(~{::title},~{::link},~{})">
-    <title>用户首页</title>
-    <!--<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">-->
-    <link rel="stylesheet" th:href="@{/content/plugins/ueditor/themes/default/css/ueditor.css}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>test </title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="../fonts/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+
+    <!-- Theme styling -->
+
+    <link href="../build/css/custom.min.css" rel="stylesheet">
 </head>
+
 <body>
 hello jz
+<form action="test" method="post">
+    <p>First name: <input type="text" name="fname" /></p>
+    <p>Last name: <input type="text" name="lname" /></p>
+    <input type="submit" value="Submit" />
+</form>
 </body>
 </html>

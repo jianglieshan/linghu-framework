@@ -41,7 +41,7 @@ spring:
     store-type: hash_map
   devtools:
     restart:
-      exclude: templates/**,static/**
+      exclude: static/**
 
 
   thymeleaf:

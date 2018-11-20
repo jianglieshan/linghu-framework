@@ -5,12 +5,20 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.format.FormatterRegistry;
+import org.springframework.format.datetime.DateFormatter;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring5.view.ThymeleafView;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
-@Configuration
+import java.util.Collections;
+
+//@Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport implements
         ApplicationContextAware {
     private  ApplicationContext applicationContext;
@@ -56,5 +64,51 @@ public class WebMvcConfig extends WebMvcConfigurationSupport implements
         return viewResolver;
     }
 
+    @Bean
+    @Scope("prototype")
+    public ThymeleafView mainView() {
+        ThymeleafView view = new ThymeleafView("main"); // templateName = 'main'
+        view.setStaticVariables(
+                Collections.singletonMap("footer", "The ACME Fruit Company"));
+        return view;
+    }
+
+
+    /* ******************************************************************* */
+    /*  GENERAL CONFIGURATION ARTIFACTS                                    */
+    /*  Static Resources, i18n Messages, Formatters (Conversion Service)   */
+    /* ******************************************************************* */
+
+    @Override
+    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+        super.addResourceHandlers(registry);
+        registry.addResourceHandler("/images/**").addResourceLocations("/images/");
+        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
+        registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+    }
+
+    @Bean
+    public ResourceBundleMessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("Messages");
+        return messageSource;
+    }
+
+    @Override
+    public void addFormatters(final FormatterRegistry registry) {
+        super.addFormatters(registry);
+//        registry.addFormatter(varietyFormatter());
+        registry.addFormatter(dateFormatter());
+    }
+
+//    @Bean
+//    public VarietyFormatter varietyFormatter() {
+//        return new VarietyFormatter();
+//    }
+
+    @Bean
+    public DateFormatter dateFormatter() {
+        return new DateFormatter();
+    }
 
 }
