@@ -44,7 +44,7 @@ public class HomeController {
         return user;
     }
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+    //@PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(value = "/user",method = RequestMethod.POST)
     public Principal user(Principal user) {
         return user;

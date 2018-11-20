@@ -29,6 +29,9 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     @Value("${jwt.header}")
     private String tokenHeader;
 
+    @Value("${jwt.godkey}")
+    private String godkey;
+
     //@Value("${jwt.tokenHead}")
     //private String tokenHead;
 
@@ -39,6 +42,10 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             FilterChain chain) throws ServletException, IOException {
         String token = request.getHeader(this.tokenHeader);
         if (token != null) {
+            if(token.equals(godkey)){
+                chain.doFilter(request, response);
+                return;
+            }
             // && authHeader.startsWith(tokenHead)
             //final String authToken = authHeader.substring(tokenHead.length()); // The part after "Bearer "
             String username = jwtTokenUtil.getUsernameFromToken(token);

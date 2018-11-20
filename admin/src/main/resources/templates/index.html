@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>hello</title>
+<!--<head th:replace="common/common_header :: common_header(~{::title},~{::link})">-->
+<head th:replace="common/common_header :: common_header(~{::title},~{::link},~{})">
+    <title>用户首页</title>
+    <!--<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">-->
+    <link rel="stylesheet" th:href="@{/content/plugins/ueditor/themes/default/css/ueditor.css}">
+
 </head>
 <body>
 hello jz

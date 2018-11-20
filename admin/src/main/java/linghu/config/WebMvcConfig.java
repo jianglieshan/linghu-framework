@@ -29,6 +29,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport implements
     public SpringResourceTemplateResolver templateResolver(){
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
+        templateResolver.setCharacterEncoding("UTF-8");
         return templateResolver;
     }
 
