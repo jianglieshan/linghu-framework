@@ -25,6 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .and()
                 .formLogin()
+                .loginPage("/admin/login")
                 .loginProcessingUrl("/admin/login")
                 .and();
         http.csrf().disable();
@@ -34,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configGlobal(AuthenticationManagerBuilder auth) throws Exception{
         auth.inMemoryAuthentication().withUser("admin").password("admin")
-        .roles("ADMIN");
+        .roles("ADMIN").and();
 
     }
 
