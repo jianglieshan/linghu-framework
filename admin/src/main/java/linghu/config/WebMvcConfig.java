@@ -87,12 +87,12 @@ public class WebMvcConfig extends WebMvcConfigurationSupport implements
         registry.addResourceHandler("/js/**").addResourceLocations("/js/");
     }
 
-    @Bean
-    public ResourceBundleMessageSource messageSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename("Messages");
-        return messageSource;
-    }
+//    @Bean
+//    public ResourceBundleMessageSource messageSource() {
+//        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+//        messageSource.setBasename("Messages");
+//        return messageSource;
+//    }
 
     @Override
     public void addFormatters(final FormatterRegistry registry) {

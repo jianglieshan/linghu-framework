@@ -26,9 +26,9 @@ public class AuthProvider implements AuthenticationProvider {
         if(!encoder.matches(inputPwd,uvm.getPwd())){
             throw new BadCredentialsException("");
         }
-        return null;
-
-//        return new UsernamePasswordAuthenticationToken();
+//        return null;
+        JwtUser ju = JwtUserFactory.create(uvm);
+        return new UsernamePasswordAuthenticationToken(ju,null,ju.getAuthorities());
     }
 
     @Override

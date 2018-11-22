@@ -1,8 +1,9 @@
-package linghu.oauth;
+package linghu.security;
 
 import linghu.userservice.dto.UserViewModel;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
