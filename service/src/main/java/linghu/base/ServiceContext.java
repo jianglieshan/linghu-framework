@@ -1,16 +1,41 @@
 package linghu.base;
 
 public class ServiceContext{
-    public String currentUserId;
-    public String token;
-    public String device;
-    public String userName;
-    public String role;
+    private String userId;
+    private String userName;
+    private String role;
+    private String token;
 
-    public ServiceContext(String currentUserId, String token, String device) {
-        this.currentUserId = currentUserId;
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
         this.token = token;
-        this.device = device;
     }
 
     public ServiceContext() {

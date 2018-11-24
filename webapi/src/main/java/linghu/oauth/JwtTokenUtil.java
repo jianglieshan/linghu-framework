@@ -77,8 +77,6 @@ public class JwtTokenUtil implements Serializable {
         final Date createdDate = new Date();
         final Date expirationDate = calculateExpirationDate(createdDate);
 
-//        Key sk =io.jsonwebtoken.security.
-
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(subject)
@@ -112,7 +110,7 @@ public class JwtTokenUtil implements Serializable {
         JwtUser user = (JwtUser) userDetails;
         final String username = getUsernameFromToken(token);
         final Date created = getIssuedAtDateFromToken(token);
-        //final Date expiration = getExpirationDateFromToken(token);
+//        final Date expiration = getExpirationDateFromToken(token);
         return (
                 username.equals(user.getUsername())
                         && !isTokenExpired(token)

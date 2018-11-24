@@ -32,7 +32,7 @@ public class AuthController {
     @RequestMapping(value = "${jwt.route.authentication.login}", method = RequestMethod.POST)
     public BaseResponse<UserViewModel> login(
             @RequestBody BaseRequest<LoginRequest> request) throws AuthenticationException {
-        UserViewModel u = authService.login(request.param, request.clientInfo);
+        UserViewModel u = authService.login(request.getParam(), request.getClientInfo());
         return new BaseResponse<>(u,ErrorCode.SUCCESS);
     }
 
@@ -46,6 +46,6 @@ public class AuthController {
 
     @RequestMapping(value = "${jwt.route.authentication.register}", method = RequestMethod.POST)
     public BaseResponse<UserViewModel> register(@RequestBody BaseRequest<RegisterRequest> request) throws AuthenticationException{
-        return  new BaseResponse<>(authService.register(request.param,request.clientInfo),ErrorCode.SUCCESS);
+        return  new BaseResponse<>(authService.register(request.getParam(),request.getClientInfo()),ErrorCode.SUCCESS);
     }
 }

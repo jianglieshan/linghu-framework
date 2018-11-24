@@ -1,9 +1,7 @@
 package linghu.base;
 
 public class BasePageRequest<T> extends BaseRequest<T>{
-    public PageModel page;
-    //public Map filterSortMap;
-
+    private PageModel page;
 
     public PageModel getPage() {
         return page;
@@ -22,9 +20,4 @@ public class BasePageRequest<T> extends BaseRequest<T>{
         super(param);
         this.page = page;
     }
-
-    public BasePageRequest(){
-
-    }
-
 }

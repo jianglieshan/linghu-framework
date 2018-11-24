@@ -2,7 +2,7 @@ package linghu.base;
 
 public class CommonRequest {
 
-    public ServiceContext clientInfo;
+    private ServiceContext clientInfo;
 
     public ServiceContext getClientInfo() {
         return clientInfo;
@@ -16,7 +16,9 @@ public class CommonRequest {
         this.clientInfo = clientInfo;
     }
 
-    public CommonRequest() {
+    public CommonRequest(){
+
     }
+
 }
 

@@ -31,6 +31,7 @@ public class PageModel {
     public void setTotal(long total) {
         this.total = total;
         pageSize = pageSize<=0?10:pageSize;
+
         if(total%pageSize == 0){
             pages = total/pageSize;
         }
@@ -48,14 +49,11 @@ public class PageModel {
     }
 
     public long getSkips() {
+        if(pageNum == 0){
+            return  0;
+        }
         return (pageNum-1) * pageSize;
     }
-
-//    public void setSkips(long skips) {
-//        this.skips = skips;
-//    }
-
-
 
     public PageModel() {
     }

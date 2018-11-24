@@ -34,6 +34,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     //@Value("${jwt.tokenHead}")
     //private String tokenHead;
+//    private static final String FILTER_APPLIED = "__spring_security_demoFilter_filterApplied";
+
 
     @Override
     protected void doFilterInternal(
@@ -46,11 +48,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                 chain.doFilter(request, response);
                 return;
             }
-            // && authHeader.startsWith(tokenHead)
-            //final String authToken = authHeader.substring(tokenHead.length()); // The part after "Bearer "
             String username = jwtTokenUtil.getUsernameFromToken(token);
-
-            logger.info("checking authentication " + username);
 
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
@@ -61,7 +59,6 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                             userDetails, null, userDetails.getAuthorities());
                     authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(
                             request));
-                    logger.info("authenticated user " + username + ", setting security context");
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             }

@@ -1,7 +1,7 @@
 package linghu.base;
 
 public class BaseRequest<T> extends CommonRequest{
-    public T param;
+    private T param;
 
     public T getParam() {
         return param;
@@ -15,11 +15,12 @@ public class BaseRequest<T> extends CommonRequest{
         super(clientInfo);
         this.param = param;
     }
+
     public BaseRequest(T param) {
         this.param = param;
     }
-    public BaseRequest(){
 
+    public BaseRequest() {
     }
 }
 
