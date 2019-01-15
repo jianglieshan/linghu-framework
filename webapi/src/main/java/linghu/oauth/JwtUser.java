@@ -6,6 +6,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class JwtUser implements UserDetails {
     private final String id;
@@ -76,7 +78,14 @@ public class JwtUser implements UserDetails {
     }
     // 这个是自定义的，返回上次密码重置日期
     @JsonIgnore
-    public Date getLastPasswordResetDate() {
+    Date getLastPasswordResetDate() {
         return lastPasswordResetDate;
+    }
+
+    @JsonIgnore
+    Map<String,Object> getClaimsFromUser(){
+        Map<String,Object> claims = new HashMap<>();
+        claims.put("role",authorities);
+        return claims;
     }
 }
