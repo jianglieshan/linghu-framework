@@ -13,9 +13,11 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Arrays;
 
+@EnableSwagger2
 @SpringBootApplication(scanBasePackages = "linghu")
 //@EnableAutoConfiguration(exclude = {
 //        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class

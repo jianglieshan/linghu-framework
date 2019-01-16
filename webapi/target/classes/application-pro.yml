@@ -1,0 +1,15 @@
+spring:
+  druid:
+## 初始化大小，最小，最大
+    initialSize: 15
+    minIdle: 10
+    maxActive: 50
+
+logging:
+  config: classpath:log4j2-pro.yml
+  level:
+    org.hibernate.SQL: info
+
+#config
+config:
+  env: pro

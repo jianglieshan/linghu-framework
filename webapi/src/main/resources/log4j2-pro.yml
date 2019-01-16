@@ -142,7 +142,7 @@ Configuration:
         additivity: true
         AppenderRef:
           - ref: EXCEPTION_ROLLING_FILE
-#          - ref: Mail
+          - ref: Mail
       - name: db
         level: info
         additivity: false

@@ -1,7 +1,7 @@
 # 共有8个级别，按照从低到高为：ALL < TRACE < DEBUG < INFO < WARN < ERROR < FATAL < OFF。
 Configuration:
   status: warn
-  monitorInterval: 30
+  monitorInterval: 30   #debug模式下 加载配置文件的间隔时间
   Properties: # 定义全局变量
     Property: # 缺省配置（用于开发环境）。其他环境需要在VM参数中指定，如下：
       #测试：-Dlog.level.console=warn -Dlog.level.xjj=trace
@@ -20,6 +20,25 @@ Configuration:
       target: SYSTEM_OUT
       PatternLayout:
         pattern: ${log.pattern}
+
+#   异常邮件
+    SMTP:
+      - name: Mail
+        subject: "异常邮件"
+        to: jiangzheng@114995.com
+        from: smtp@114995.com
+        smtpHost: smtp.exmail.qq.com
+        smtpPassword: "SDsdo2389"
+        smtpUsername: "smtp@114995.com"
+        bufferSize: 2048
+        PatternLayout:
+          pattern: ${log.pattern}
+        Filters:
+          ThresholdFilter:
+            - level: warn
+              onMatch: ACCEPT
+              onMismatch: DENY
+
 #   启动日志
     RollingFile:
       - name: ROLLING_FILE
@@ -41,7 +60,7 @@ Configuration:
             modulate: true
             interval: 1
         DefaultRolloverStrategy:     # 文件最多100个
-          max: 100
+          max: 50
 #   平台日志
       - name: PLATFORM_ROLLING_FILE
         ignoreExceptions: false
@@ -98,6 +117,7 @@ Configuration:
             interval: 1
         DefaultRolloverStrategy:     # 文件最多100个
           max: 100
+
   Loggers:
     Root:
       level: info
@@ -118,10 +138,11 @@ Configuration:
         AppenderRef:
           - ref: BUSSINESS_ROLLING_FILE
       - name: exception
-        level: debug
+        level: info
         additivity: true
         AppenderRef:
           - ref: EXCEPTION_ROLLING_FILE
+          - ref: Mail
       - name: db
         level: info
         additivity: false

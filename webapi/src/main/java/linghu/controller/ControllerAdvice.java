@@ -3,6 +3,7 @@ package linghu.controller;
 import linghu.base.BaseResponse;
 import linghu.base.ErrorCode;
 import linghu.exceptionservice.ServiceException;
+import linghu.utils.LogUtils;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
@@ -42,6 +43,7 @@ public class ControllerAdvice {
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public BaseResponse<String> errorHandler(Exception ex) {
+        LogUtils.getExceptionLogger().error("异常",ex);
         return new BaseResponse<>(ex.toString(),ErrorCode.FAILURE);
     }
 

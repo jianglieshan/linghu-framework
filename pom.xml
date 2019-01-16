@@ -36,11 +36,19 @@
         <aliyun-java-sdk-core-version>3.7.1</aliyun-java-sdk-core-version>
         <aliyun-java-sdk-dysmsapi-version>1.1.0</aliyun-java-sdk-dysmsapi-version>
         <com-alibaba-druid-version>1.1.10</com-alibaba-druid-version>
-
         <!--jwt-->
         <jjwt-api-version>0.10.5</jjwt-api-version>
         <jjwt-impl-version>0.10.5</jjwt-impl-version>
         <jjwt-jackson-version>0.10.5</jjwt-jackson-version>
+        <modelmapper-version>2.3.2</modelmapper-version>
+        <!--jackson-->
+        <jackson-annotations>2.9.0</jackson-annotations>
+        <!--doc-->
+        <springfox-swagger2-version>2.6.1</springfox-swagger2-version>
+        <springfox-swagger-ui-version>2.6.1</springfox-swagger-ui-version>
+        <!--main-->
+        <javax-mail-version>1.4.7</javax-mail-version>
+        <javax-activation-version>1.1.1</javax-activation-version>
 
     </properties>
 
@@ -116,6 +124,42 @@
                 <artifactId>jjwt-jackson</artifactId>
                 <version>${jjwt-jackson-version}</version>
             </dependency>
+            <!--model mapper-->
+            <dependency>
+                <groupId>org.modelmapper</groupId>
+                <artifactId>modelmapper</artifactId>
+                <version>${modelmapper-version}</version>
+            </dependency>
+            <!--jackson-->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson-annotations}</version>
+            </dependency>
+            <!--doc-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger2-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger-ui-version}</version>
+            </dependency>
+            <!--mail-->
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>${javax-mail-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.activation</groupId>
+                <artifactId>activation</artifactId>
+                <version>${javax-activation-version}</version>
+            </dependency>
+
+
 
 
 
